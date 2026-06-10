@@ -48,7 +48,7 @@ function killSession() {
 // Initial welcome message 
 function welcome() {
   print("=== 44 NODES - SECURE TERMINAL ===");
-  print("Welcome TEST PLAYER");
+  print("Welcome PLAYER");
   print("Visit the rules page for game instructions");
   print("Type 'ready' to request assignment.");
 }
