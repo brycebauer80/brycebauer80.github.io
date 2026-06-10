@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>44 Nodes - Secure Terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Dynamic header-->
+  <div id="header">
+    <img id="header-icon" src="icon.png" alt="Node Icon">
+    <span id="header-title">Loading...</span>
+    <a href="rules.html">Rules</a>
+  </div>
+  <div id="terminal">
+    <div id="output"></div>
+    <div class="input-line">
+      <span>C:\Users\44nodes> </span>
+      <input type="text" id="input" autofocus />
+    </div>
+  </div>
+  <script>
+    // Logic to adjust CSV file referenced dependent on the qr code scanned
+    function getNodeInfo() {
+      const params = new URLSearchParams(window.location.search);
+      let node = null;
+      if (params.has('node')) {
+        node = params.get('node');
+      } else {
+        const pathMatch = window.location.pathname.match(/\/([\w-]+)\/?(index\.html)?$/);
+        if (pathMatch && pathMatch[1] && pathMatch[1] !== "index.html") {
+          node = pathMatch[1];
+        }
+      }
+      if (!node) node = "node1";
+      return {
+        csv: `data/${node}.csv`,
+        node
+      };
+    }
+    const nodeInfo = getNodeInfo();
+    window.NODE_FILE = nodeInfo.csv;
+    // Set header title
+    function formatHeader(csv) {
+      // Change page title dependent on csv file linked
+      // Allows for randomised csv file naming to make the url more complex hard to guess (soooo secure yep haha)
+      const map = {
+        'data/node1.csv': 'ROUND 1 - Node 1',
+        'data/node2.csv': 'ROUND 1 - Node 2',
+        'data/node3.csv': 'ROUND 1 - Node 3',
+        'data/node4.csv': 'ROUND 2 - Node 1',
+        'data/node5.csv': 'ROUND 2 - Node 2',
+        // Add extra here
+      };
+      return map[csv] || '44 Nodes - Secure Terminal';
+    }
+    document.getElementById('header-title').textContent = formatHeader(nodeInfo.csv);
+  </script>
+  <!-- links the script game logic to html file-->
+  <script src="game.js"></script>
+</body>
+</html>
