@@ -135,7 +135,12 @@ input.addEventListener("keydown", e => {
 // On load, check if challenge is locked for this session
 try {
   // Always block if session is locked, even if coming from rules.html
-  if (sessionStorage.getItem('challenge-locked') === '1') {
+  if (sessionStorage.getItem('challenge-locked') === '1') 
+      print("");
+      print("[CHALLENGE FOUND]");
+      print("ASSIGNMENT: " + currentChallenge.title);
+      print(currentChallenge.description);
+      print(""); {
     document.body.innerHTML = `
       <div id="header">
         <img id="header-icon" src="icon.png" alt="Node Icon">
@@ -146,11 +151,6 @@ try {
         You must scan the Node to get a new challenge.<br><br>Reloading is not allowed.
       </div>
       `;
-      print("");
-      print("[CHALLENGE FOUND]");
-      print("ASSIGNMENT: " + currentChallenge.title);
-      print(currentChallenge.description);
-      print("");
     throw new Error('Challenge locked');
   }
 } catch (e) {}
