@@ -141,8 +141,7 @@ try {
       print("[CHALLENGE FOUND]");
       print("ASSIGNMENT: " + currentChallenge.title);
       print(currentChallenge.description);
-      print(""); 
-  {
+      print(""); {
     document.body.innerHTML = `
       <div id="header">
         <img id="header-icon" src="icon.png" alt="Node Icon">
