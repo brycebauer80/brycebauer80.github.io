@@ -48,7 +48,7 @@ function killSession() {
 // Initial welcome message 
 function welcome() {
   print("=== 44 NODES - SECURE TERMINAL ===");
-  print("Welcome TEST PLAYER");
+  print("Welcome PLAYER");
   print("Visit the rules page for game instructions");
   print("Type 'ready' to request assignment.");
 }
@@ -136,12 +136,7 @@ input.addEventListener("keydown", e => {
 try {
   // Always block if session is locked, even if coming from rules.html
   if (sessionStorage.getItem('challenge-locked') === '1') 
-   throw new Error('Challenge locked');
-      print("");
-      print("[CHALLENGE FOUND]");
-      print("ASSIGNMENT: " + currentChallenge.title);
-      print(currentChallenge.description);
-      print(""); {
+   throw new Error('Challenge locked'); {
     document.body.innerHTML = `
       <div id="header">
         <img id="header-icon" src="icon.png" alt="Node Icon">
