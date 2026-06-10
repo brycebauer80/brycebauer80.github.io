@@ -146,6 +146,11 @@ try {
         You must scan the Node to get a new challenge.<br><br>Reloading is not allowed.
       </div>
       `;
+      print("");
+      print("[CHALLENGE FOUND]");
+      print("ASSIGNMENT: " + currentChallenge.title);
+      print(currentChallenge.description);
+      print("");
     throw new Error('Challenge locked');
   }
 } catch (e) {}
