@@ -48,7 +48,7 @@ function killSession() {
 // Initial welcome message 
 function welcome() {
   print("=== 44 NODES - SECURE TERMINAL ===");
-  print("Welcome PLAYER");
+  print("Welcome TEST PLAYER");
   print("Visit the rules page for game instructions");
   print("Type 'ready' to request assignment.");
 }
@@ -136,6 +136,7 @@ input.addEventListener("keydown", e => {
 try {
   // Always block if session is locked, even if coming from rules.html
   if (sessionStorage.getItem('challenge-locked') === '1') 
+   throw new Error('Challenge locked');
       print("");
       print("[CHALLENGE FOUND]");
       print("ASSIGNMENT: " + currentChallenge.title);
@@ -151,6 +152,5 @@ try {
         You must scan the Node to get a new challenge.<br><br>Reloading is not allowed.
       </div>
       `;
-    throw new Error('Challenge locked');
   }
 } catch (e) {}
